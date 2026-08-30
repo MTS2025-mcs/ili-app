@@ -115,7 +115,8 @@ export default function AssessmentPage() {
       if (res.ok) {
         router.push('/assessment/thank-you');
       } else {
-        alert('Errore durante l\'invio. Riprova.');
+        const text = await res.text();
+        alert('Errore server: ' + text);
       }
     } finally {
       setSubmitting(false);
