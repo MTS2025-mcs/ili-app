@@ -1,19 +1,23 @@
-import { createBrowserClient } from '@supabase/ssr';
-import { createServerClient, type CookieOptions } from '@supabase/ssr';
 import { cookies } from 'next/headers';
 import { createClient } from '@supabase/supabase-js';
+import { createServerClient, type CookieOptions } from '@supabase/ssr';
 
-export const getSupabaseBrowserClient = () =>
-  createBrowserClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-  );
+const supabaseUrl = process.env.SUPABASE_URL ?? process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseAnonKey = process.env.SUPABASE_ANON_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+function requireEnv(value: string | undefined, name: string): string {
+  if (!value) {
+    throw new Error(`${name} is required.`);
+  }
+  return value;
+}
 
 export const getSupabaseServerClient = async () => {
   const cookieStore = await cookies();
   return createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    requireEnv(supabaseUrl, 'supabaseUrl'),
+    requireEnv(supabaseAnonKey, 'supabaseAnonKey'),
     {
       cookies: {
         get(name: string) {
@@ -32,8 +36,8 @@ export const getSupabaseServerClient = async () => {
 
 export const getSupabaseAdminClient = () =>
   createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_ROLE_KEY!,
+    requireEnv(supabaseUrl, 'supabaseUrl'),
+    requireEnv(supabaseServiceRoleKey, 'supabaseServiceRoleKey'),
     {
       auth: { autoRefreshToken: false, persistSession: false },
     }

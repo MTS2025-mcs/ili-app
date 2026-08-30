@@ -65,7 +65,14 @@ Questo comando esegue in sequenza lint, test e build.
 ## Deploy su Vercel
 
 1. Connetti la repo a Vercel.
-2. Imposta le variabili d'ambiente dal pannello Vercel.
+2. Imposta le variabili d'ambiente dal pannello Vercel:
+   - `SUPABASE_URL`
+   - `SUPABASE_ANON_KEY`
+   - `SUPABASE_SERVICE_ROLE_KEY`
+   - `RESEND_API_KEY`
+   - `CONSULTANT_EMAIL`
+   - `ADMIN_JWT_SECRET`
+   - `NEXT_PUBLIC_SITE_URL`
 3. Esegui il deploy con `git push`.
 
 ## Note legali
