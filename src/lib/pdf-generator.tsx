@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
   row: { flexDirection: 'row', justifyContent: 'space-between', marginVertical: 4 },
   score: { fontSize: 20, fontFamily: 'Helvetica-Bold', color: '#0f172a' },
   note: { fontSize: 10, color: '#64748b', marginTop: 20 },
-  bottleneckNote: { fontSize: 11, color: '#64748b', marginTop: 6 },
+  bottleneckNote: { fontSize: 9, color: '#64748b', marginTop: 4 },
   chartRow: { flexDirection: 'row', alignItems: 'center', marginVertical: 5 },
   chartLabel: { width: 130, fontSize: 9, paddingRight: 6 },
   chartTrack: { flex: 1, height: 16, backgroundColor: '#e2e8f0', borderRadius: 4 },
