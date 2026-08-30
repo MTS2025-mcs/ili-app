@@ -7,12 +7,20 @@ export async function sendConsultantNotification(assessment: {
   last_name: string | null;
   ili: number | null;
 }) {
-  const resend = new Resend(process.env.RESEND_API_KEY);
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
+  const resendApiKey = process.env.RESEND_API_KEY;
+  if (!resendApiKey) {
+    console.warn('RESEND_API_KEY non impostata: email non inviata.');
+    return;
+  }
 
-  await resend.emails.send({
-    from: 'ILI <no-reply@example.com>',
-    to: process.env.CONSULTANT_EMAIL ?? 'mattia.saracino@example.com',
+  const resend = new Resend(resendApiKey);
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
+  const from = process.env.RESEND_FROM_EMAIL ?? 'onboarding@resend.dev';
+  const to = process.env.CONSULTANT_EMAIL ?? 'mattia.saracino@example.com';
+
+  const { error } = await resend.emails.send({
+    from: `ILI <${from}>`,
+    to,
     subject: 'Nuovo assessment ILI completato',
     html: `
       <p>È stato completato un nuovo assessment.</p>
@@ -22,4 +30,8 @@ export async function sendConsultantNotification(assessment: {
       <p><a href="${siteUrl}/admin/assessments/${assessment.id}">Apri scheda</a></p>
     `,
   });
+
+  if (error) {
+    console.error('Errore invio email Resend:', error);
+  }
 }
