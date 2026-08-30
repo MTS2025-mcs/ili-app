@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { cookies } from 'next/headers';
 import { notFound, redirect } from 'next/navigation';
 import { getSupabaseAdminClient } from '@/lib/supabase';
@@ -40,6 +41,20 @@ export default async function AdminAssessmentDetail({ params }: { params: Promis
         >
           Scarica PDF
         </a>
+        <div className="flex gap-4">
+          <Link
+            href="/admin/assessments"
+            className="rounded-full border border-slate-300 px-6 py-3 text-slate-700 hover:bg-slate-100"
+          >
+            Torna all&apos;elenco
+          </Link>
+          <Link
+            href="/"
+            className="rounded-full border border-slate-300 px-6 py-3 text-slate-700 hover:bg-slate-100"
+          >
+            Homepage
+          </Link>
+        </div>
       </div>
     </main>
   );
