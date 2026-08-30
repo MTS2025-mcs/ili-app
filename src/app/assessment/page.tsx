@@ -68,6 +68,10 @@ export default function AssessmentPage() {
     };
   }, [lastActive]);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [step]);
+
   const section = sections[step];
 
   const sectionQuestions = useMemo(() => {
