@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Indice di Libertà Imprenditoriale',
+  title: 'BF360',
   description: 'Scopri quanto la tua azienda dipende da te.',
 };
 

@@ -1,5 +1,5 @@
 export const brand = {
-  brandName: '[NOME BRAND]',
+  brandName: 'BF360',
   consultantName: 'Mattia Cosimo Saracino',
   consultantEmail: process.env.CONSULTANT_EMAIL ?? 'mattia.saracino@example.com',
   consultantPhone: '[TELEFONO]',

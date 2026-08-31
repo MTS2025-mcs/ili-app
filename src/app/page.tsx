@@ -6,7 +6,7 @@ export default function Home() {
     <main className="flex flex-1 flex-col items-center justify-center px-6 py-16 text-center">
       <div className="max-w-2xl space-y-8">
         <h1 className="text-3xl font-bold tracking-tight sm:text-4xl text-slate-900">
-          Quanto è davvero libera la tua azienda da te?
+          {brand.brandName}
         </h1>
         <p className="text-lg text-slate-600">
           In circa {brand.assessment.estimatedMinutes} minuti scoprirai quali aree stanno rendendo l&apos;azienda autonoma e quali dipendono ancora troppo dalla tua presenza. Il risultato sarà analizzato personalmente dal consulente e condiviso con te durante un incontro dedicato.
