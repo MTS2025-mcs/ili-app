@@ -41,6 +41,13 @@ export default async function AdminAssessmentDetail({ params }: { params: Promis
         >
           Scarica PDF
         </a>
+        <a
+          href={`/admin/assessments/${id}/consultant-pdf`}
+          target="_blank"
+          className="ml-4 inline-block rounded-full bg-slate-700 px-6 py-3 text-white hover:bg-slate-600"
+        >
+          Scarica PDF consulente
+        </a>
         <div className="flex gap-4">
           <Link
             href="/admin/assessments"
