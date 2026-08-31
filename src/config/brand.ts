@@ -3,7 +3,7 @@ export const brand = {
   consultantName: 'Mattia Cosimo Saracino',
   consultantEmail: process.env.CONSULTANT_EMAIL ?? 'mattia.saracino@example.com',
   consultantPhone: '[TELEFONO]',
-  logoUrl: '[LOGO]',
+  logoUrl: '/logobf360.png',
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000',
   privacyUrl: 'https://example.com/privacy',
   dataRetentionDays: 365 * 2,

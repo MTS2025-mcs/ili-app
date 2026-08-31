@@ -5,6 +5,11 @@ export default function Home() {
   return (
     <main className="flex flex-1 flex-col items-center justify-center px-6 py-16 text-center">
       <div className="max-w-2xl space-y-8">
+        <img
+          src={brand.logoUrl}
+          alt={brand.brandName}
+          className="mx-auto h-24 w-auto"
+        />
         <div className="space-y-2">
           <p className="text-sm font-semibold uppercase tracking-widest text-slate-500">
             {brand.brandName}

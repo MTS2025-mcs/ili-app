@@ -8,6 +8,11 @@ export default function ThankYou() {
         <p className="text-slate-700">
           Il tuo risultato verrà analizzato personalmente da {brand.consultantName} e condiviso con te durante un incontro dedicato.
         </p>
+        <img
+          src={brand.logoUrl}
+          alt={brand.brandName}
+          className="mx-auto h-24 w-auto"
+        />
       </div>
     </main>
   );
