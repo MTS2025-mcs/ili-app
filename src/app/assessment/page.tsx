@@ -4,6 +4,8 @@ import { useEffect, useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import { demographicSchema } from '@/lib/validation-schemas';
+import { areaDescriptions } from '@/config/scoring';
+import type { AreaCode } from '@/types/scoring';
 import type { z } from 'zod';
 import { diagnosticQuestions, contextQuestions, reliabilityQuestions } from '@/question-bank/questions';
 import { ProgressBar } from '@/components/ProgressBar';
@@ -16,7 +18,7 @@ const sections = [
   { id: 'demographic', label: 'Dati' },
   { id: 'context', label: 'Contesto' },
   { id: 'HR', label: 'Risorse umane' },
-  { id: 'SE', label: 'Tono emotivo' },
+  { id: 'SE', label: 'Lucidità sotto pressione' },
   { id: 'FI', label: 'Finanza' },
   { id: 'MK', label: 'Marketing' },
   { id: 'TI', label: 'Tempo' },
@@ -234,6 +236,9 @@ export default function AssessmentPage() {
         {section.id !== 'demographic' && (
           <div className="space-y-6 rounded-2xl bg-white p-6 shadow-sm">
             <h2 className="text-xl font-semibold">{section.label}</h2>
+            {areaDescriptions[section.id as AreaCode] && (
+              <p className="text-sm text-slate-600">{areaDescriptions[section.id as AreaCode]}</p>
+            )}
             {sectionQuestions.map((q) => (
               <div key={q.id}>
                 {q.type === 'diagnostic' || q.type === 'reliability' ? (

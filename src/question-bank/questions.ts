@@ -11,7 +11,7 @@ export const diagnosticQuestions: DiagnosticQuestion[] = [
   { id: 'HR07', text: 'Dedico ancora molto tempo ad attività che potrebbero essere svolte da altri con una procedura chiara.', area: 'HR', subdimension: 'Delega', direction: 'reverse', type: 'diagnostic' },
   { id: 'HR08', text: 'L\'azienda può lavorare per sette giorni senza un mio intervento operativo diretto.', area: 'HR', subdimension: 'Continuità', direction: 'positive', type: 'diagnostic' },
 
-  // Gestione di sé e tono emotivo - SE
+  // Lucidità sotto pressione - SE
   { id: 'SE01', text: 'Di fronte a un imprevisto riesco a rimanere lucido prima di decidere.', area: 'SE', subdimension: 'Lucidità', direction: 'positive', type: 'diagnostic' },
   { id: 'SE02', text: 'Anche sotto pressione distinguo i fatti dalle interpretazioni e dalle paure.', area: 'SE', subdimension: 'Lucidità', direction: 'positive', type: 'diagnostic' },
   { id: 'SE03', text: 'Quando sono stressato comunico comunque in modo chiaro e rispettoso con il team.', area: 'SE', subdimension: 'Comunicazione', direction: 'positive', type: 'diagnostic' },

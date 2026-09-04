@@ -1,5 +1,5 @@
 import { Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
-import { scoring } from '@/config/scoring';
+import { areaDescriptions, scoring } from '@/config/scoring';
 import { classifyArea } from '@/lib/scoring-engine';
 import type { AreaCode } from '@/types/scoring';
 
@@ -69,6 +69,9 @@ export function createILIPDFDocument({
             {bottleneck ? `${scoring.areas[bottleneck].name} — ${areaScores[bottleneck].toFixed(1)}/100` : '—'}
           </Text>
         </View>
+        {bottleneck && areaDescriptions[bottleneck] && (
+          <Text style={styles.bottleneckNote}>{areaDescriptions[bottleneck]}</Text>
+        )}
         {bottleneck && (
           <Text style={styles.bottleneckNote}>
             Questa &egrave; l&apos;area con il punteggio pi&ugrave; basso e potrebbe essere quella che oggi limita maggiormente la libert&agrave; dell&apos;imprenditore.
