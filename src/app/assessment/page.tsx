@@ -246,6 +246,11 @@ export default function AssessmentPage() {
                     question={q.text}
                     selected={Number(answers[q.id]?.value ?? 0)}
                     onSelect={(v) => setAnswer(q.id, v)}
+                    labels={
+                      'options' in q && q.options?.length === 5
+                        ? q.options.map((opt) => opt.label)
+                        : undefined
+                    }
                   />
                 ) : (
                   <div>

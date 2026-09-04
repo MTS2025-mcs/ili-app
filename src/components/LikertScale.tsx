@@ -1,4 +1,4 @@
-const labels = [
+const defaultLabels = [
   'Mai / per nulla vero',
   'Raramente',
   'A volte',
@@ -10,10 +10,12 @@ export function LikertScale({
   question,
   selected,
   onSelect,
+  labels = defaultLabels,
 }: {
   question: string;
   selected: number;
   onSelect: (v: number) => void;
+  labels?: string[];
 }) {
   return (
     <div className="space-y-3">

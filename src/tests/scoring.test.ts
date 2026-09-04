@@ -136,10 +136,27 @@ describe('IAR componenti', () => {
 
   it('plausibilità massima', () => {
     const answers: Record<string, Answer> = {
-      VA06: { questionId: 'VA06', value: 1, timestamp: 0 },
+      VA06: { questionId: 'VA06', value: 2, timestamp: 0 },
       VA07: { questionId: 'VA07', value: 1, timestamp: 0 },
     };
     expect(getPlausibilityScore(answers)).toBe(15);
+  });
+
+  it('VA06 "Nessuna" non assegna punti di plausibilità', () => {
+    const answers: Record<string, Answer> = {
+      VA06: { questionId: 'VA06', value: 1, timestamp: 0 },
+      VA07: { questionId: 'VA07', value: 1, timestamp: 0 },
+    };
+    expect(getPlausibilityScore(answers)).toBe(7.5);
+  });
+
+  it('VA06: le risposte oltre "Nessuna" valgono tutte uguale', () => {
+    for (const value of [2, 3, 4, 5]) {
+      const answers: Record<string, Answer> = {
+        VA06: { questionId: 'VA06', value, timestamp: 0 },
+      };
+      expect(getPlausibilityScore(answers)).toBe(7.5);
+    }
   });
 
   it('accuratezza massima', () => {
@@ -174,7 +191,7 @@ describe('IAR totale', () => {
       VA03: 1,
       VA04: 1,
       VA05: 1,
-      VA06: 1,
+      VA06: 2,
       VA07: 1,
       VA08: 2,
       VA09: 5,

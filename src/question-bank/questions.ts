@@ -128,7 +128,20 @@ export const reliabilityQuestions: ReliabilityQuestion[] = [
   { id: 'VA05', text: 'Anche nei giorni di assenza ho bisogno di sentire quotidianamente l\'azienda.', compareWith: 'TI03', direction: 'reverse', category: 'coherence', type: 'reliability' },
 
   // Plausibilità
-  { id: 'VA06', text: 'Negli ultimi 12 mesi non ho mai preso una decisione aziendale sbagliata.', direction: 'positive', category: 'plausibility', type: 'reliability' },
+  {
+    id: 'VA06',
+    text: 'Negli ultimi 12 mesi, quante decisioni aziendali ritieni, a posteriori, che avresti potuto gestire diversamente?',
+    direction: 'positive',
+    category: 'plausibility',
+    type: 'reliability',
+    options: [
+      { value: 1, label: 'Nessuna' },
+      { value: 2, label: '1-2' },
+      { value: 3, label: '3-5' },
+      { value: 4, label: '6-10' },
+      { value: 5, label: 'Più di 10' },
+    ],
+  },
   { id: 'VA07', text: 'Tutti i miei collaboratori comprendono sempre le mie indicazioni al primo tentativo.', direction: 'positive', category: 'plausibility', type: 'reliability' },
 
   // Controllo attenzione

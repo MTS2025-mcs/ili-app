@@ -109,14 +109,18 @@ export function getAttentionScore(answers: Record<string, Answer>): number {
 }
 
 export function getPlausibilityScore(answers: Record<string, Answer>): number {
-  const va06 = Number(answers['VA06']?.value ?? 5);
+  // VA06: conteggio di decisioni che l'imprenditore rifarebbe diversamente.
+  // Solo "Nessuna" (1) è una risposta assoluta da approfondire; le altre sono
+  // tutte plausibili allo stesso modo.
+  const va06 = Number(answers['VA06']?.value ?? 1);
+  const va06Points = va06 >= 2 ? 7.5 : 0;
   const va07 = Number(answers['VA07']?.value ?? 5);
-  const score = (v: number) => {
-    if (v <= 3) return 7.5;
-    if (v === 4) return 3.5;
+  const va07Points = (() => {
+    if (va07 <= 3) return 7.5;
+    if (va07 === 4) return 3.5;
     return 0;
-  };
-  return score(va06) + score(va07);
+  })();
+  return va06Points + va07Points;
 }
 
 export function getAccuracyScore(answers: Record<string, Answer>): number {
@@ -214,7 +218,7 @@ export function calculateIAR(answers: Record<string, Answer>, activeMs: number):
     details: {
       coherencePairs,
       va08Correct: Number(answers['VA08']?.value) === 2,
-      va06Score: Number(answers['VA06']?.value ?? 5),
+      va06Score: Number(answers['VA06']?.value ?? 1),
       va07Score: Number(answers['VA07']?.value ?? 5),
       va09Score: Number(answers['VA09']?.value ?? 1),
       va10Score: Number(answers['VA10']?.value ?? 1),
