@@ -1,7 +1,13 @@
+import type { AreaCode } from '@/types/scoring';
+
+export const areaDescriptions: Partial<Record<AreaCode, string>> = {
+  SE: 'Fotografa quanto l’imprenditore riesce a mantenere chiarezza, priorità, comunicazione efficace e capacità di delega nelle situazioni di pressione aziendale.',
+};
+
 export const scoring = {
   areas: {
     HR: { name: 'Gestione delle risorse umane', weight: 0.25 },
-    SE: { name: 'Gestione di sé e del tono emotivo', weight: 0.20 },
+    SE: { name: 'Lucidità sotto pressione', weight: 0.20 },
     FI: { name: 'Gestione finanziaria', weight: 0.20 },
     MK: { name: 'Marketing strategico e social', weight: 0.15 },
     TI: { name: 'Gestione del tempo', weight: 0.20 },

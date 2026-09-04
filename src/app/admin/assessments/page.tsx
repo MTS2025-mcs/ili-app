@@ -2,6 +2,8 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { getSupabaseAdminClient } from '@/lib/supabase';
+import { scoring } from '@/config/scoring';
+import type { AreaCode } from '@/types/scoring';
 import type { Database } from '@/types/database';
 
 export default async function AdminAssessments() {
@@ -45,7 +47,9 @@ export default async function AdminAssessments() {
                   <td className="p-4">{a.company_name}</td>
                   <td className="p-4">{a.ili}</td>
                   <td className="p-4">{a.iar}</td>
-                  <td className="p-4">{a.bottleneck}</td>
+                  <td className="p-4">
+                    {a.bottleneck ? scoring.areas[a.bottleneck as AreaCode]?.name ?? a.bottleneck : '—'}
+                  </td>
                   <td className="p-4">{a.followup_status}</td>
                   <td className="p-4">
                     <Link href={`/admin/assessments/${a.id}`} className="text-blue-600 hover:underline">

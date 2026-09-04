@@ -11,7 +11,7 @@ export const diagnosticQuestions: DiagnosticQuestion[] = [
   { id: 'HR07', text: 'Dedico ancora molto tempo ad attività che potrebbero essere svolte da altri con una procedura chiara.', area: 'HR', subdimension: 'Delega', direction: 'reverse', type: 'diagnostic' },
   { id: 'HR08', text: 'L\'azienda può lavorare per sette giorni senza un mio intervento operativo diretto.', area: 'HR', subdimension: 'Continuità', direction: 'positive', type: 'diagnostic' },
 
-  // Gestione di sé e tono emotivo - SE
+  // Lucidità sotto pressione - SE
   { id: 'SE01', text: 'Di fronte a un imprevisto riesco a rimanere lucido prima di decidere.', area: 'SE', subdimension: 'Lucidità', direction: 'positive', type: 'diagnostic' },
   { id: 'SE02', text: 'Anche sotto pressione distinguo i fatti dalle interpretazioni e dalle paure.', area: 'SE', subdimension: 'Lucidità', direction: 'positive', type: 'diagnostic' },
   { id: 'SE03', text: 'Quando sono stressato comunico comunque in modo chiaro e rispettoso con il team.', area: 'SE', subdimension: 'Comunicazione', direction: 'positive', type: 'diagnostic' },
@@ -128,7 +128,20 @@ export const reliabilityQuestions: ReliabilityQuestion[] = [
   { id: 'VA05', text: 'Anche nei giorni di assenza ho bisogno di sentire quotidianamente l\'azienda.', compareWith: 'TI03', direction: 'reverse', category: 'coherence', type: 'reliability' },
 
   // Plausibilità
-  { id: 'VA06', text: 'Negli ultimi 12 mesi non ho mai preso una decisione aziendale sbagliata.', direction: 'positive', category: 'plausibility', type: 'reliability' },
+  {
+    id: 'VA06',
+    text: 'Negli ultimi 12 mesi, quante decisioni aziendali ritieni, a posteriori, che avresti potuto gestire diversamente?',
+    direction: 'positive',
+    category: 'plausibility',
+    type: 'reliability',
+    options: [
+      { value: 1, label: 'Nessuna' },
+      { value: 2, label: '1-2' },
+      { value: 3, label: '3-5' },
+      { value: 4, label: '6-10' },
+      { value: 5, label: 'Più di 10' },
+    ],
+  },
   { id: 'VA07', text: 'Tutti i miei collaboratori comprendono sempre le mie indicazioni al primo tentativo.', direction: 'positive', category: 'plausibility', type: 'reliability' },
 
   // Controllo attenzione

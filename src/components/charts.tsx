@@ -3,7 +3,7 @@ import type { AreaCode } from '@/types/scoring';
 
 const areaNames: Record<AreaCode, string> = {
   HR: 'Risorse umane',
-  SE: 'Tono emotivo',
+  SE: 'Lucidità sotto pressione',
   FI: 'Finanza',
   MK: 'Marketing',
   TI: 'Tempo',
@@ -40,7 +40,7 @@ export function ILIBarChart({ areaScores }: { areaScores: Record<AreaCode, numbe
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={data} layout="vertical" margin={{ left: 40 }}>
           <XAxis type="number" domain={[0, 100]} />
-          <YAxis type="category" dataKey="area" width={100} />
+          <YAxis type="category" dataKey="area" width={150} />
           <Tooltip />
           <Bar dataKey="score" fill="#3b82f6" />
         </BarChart>
